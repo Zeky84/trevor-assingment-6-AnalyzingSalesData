@@ -6,12 +6,12 @@ import java.util.List;
 
 public class FileService {
     public List<SalesDataByModel> loadAllDataByModel(String salesModelInfo) throws IOException {
-        String[] headerLine;
+        String headerLine;
         List<SalesDataByModel> allDataByModel= new ArrayList<>();
         try (BufferedReader fileReader = new BufferedReader(new FileReader(salesModelInfo))) {
             String line;
             //Reading the header line of the file to avoid the try-catch message
-            headerLine = fileReader.readLine().split(",");
+            headerLine = fileReader.readLine();
             while ((line = fileReader.readLine()) != null) {
                 try {
                     allDataByModel.add(new SalesDataByModel(line.split("\\p{Punct}")));
