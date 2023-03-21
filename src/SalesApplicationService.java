@@ -28,7 +28,7 @@ public class SalesApplicationService {
 
     private static void modelMonthSaleReport(List<SalesDataByModel> modelDataInfo, String teslaModel,
                                        Integer saleValue, String monthCategory) {
-
+        //HELPER METHOD
         Optional<SalesDataByModel> modelObjBySaleValue = modelDataInfo.stream()
                 .filter(model -> model.getSaleValue().equals(saleValue))
                 .findAny();
@@ -39,6 +39,7 @@ public class SalesApplicationService {
     }
 
     private static void modelYearlySalesReport(List<SalesDataByModel> modelDataInfo) {
+        //HELPER METHOD
         //Streaming list to get a map with the sum of all sales by year
         Map<Integer, Integer> modelYearsSales = modelDataInfo.stream()
                 .collect(Collectors.groupingBy(SalesDataByModel::getYear,Collectors.summingInt(SalesDataByModel::getSaleValue)));
